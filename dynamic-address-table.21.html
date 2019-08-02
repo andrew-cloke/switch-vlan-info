@@ -1,0 +1,752 @@
+
+<!-- saved from url=(0039)http://10.228.0.21/dynamic_address.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+     <link rel="stylesheet" href="./dynamic-address-table.21_files/dellstyle.css" type="text/css">
+<meta http-equiv="Pragma" content="no-cache">
+
+ <!-- Style Sheet link and Meta data -->
+     <script type="text/javascript">
+      xeData = new Object();
+      xeData.nPath = [
+        ["Switching","Switching_index.html"],
+        ["Address Tables","AddressTables_index.html"],
+        ["Dynamic Address Table","dynamic_address.html"]
+];
+     </script>
+<script type="text/javascript" src="./dynamic-address-table.21_files/globalStyleJS.js"></script>
+     
+     <script type="text/javascript" language="JavaScript">
+ function DisplayErrorMsg()
+{
+    alert(document.forms[0].err_msg.value);
+}
+
+//******************************************************************************
+//* Purpose: Display an input error message.
+//* Return:  none
+//******************************************************************************
+function CheckError()
+{
+   if (document.forms[0].err_flag.value == 1)
+  {
+      DisplayErrorMsg();
+   }
+}
+
+function screen_refresh()
+{
+  document.forms[0].submit();
+}
+function portRadioChecked()
+{
+ if (document.forms[0].port_radio[1].checked)
+ {
+   document.forms[0].port_select.disabled = true;
+   document.forms[0].unit_select.disabled = true;
+   document.forms[0].lag_select.disabled = false;
+ }
+ else
+ {
+   document.forms[0].port_select.disabled = false;
+   document.forms[0].unit_select.disabled = false;
+   document.forms[0].lag_select.disabled = true;
+ }
+}
+function intfCheck()
+{
+  if (document.forms[0].qry_by_intf.checked == true)
+  {
+    document.forms[0].port_radio[0].disabled = false;
+    document.forms[0].port_radio[1].disabled = false;
+    portRadioChecked();
+  } 
+  else
+  {
+    document.forms[0].port_radio[0].disabled = true;
+    document.forms[0].port_radio[1].disabled = true;
+    document.forms[0].port_select.disabled = true;
+    document.forms[0].unit_select.disabled = true;
+    document.forms[0].lag_select.disabled = true;
+  }
+}
+function vlanCheck()
+{
+ if (document.forms[0].qry_by_vlan.checked == true)
+   document.forms[0].vlan.disabled = false;
+ else
+   document.forms[0].vlan.disabled = true;
+}
+function macCheck()
+{
+ if (document.forms[0].qry_by_mac.checked == true)
+   document.forms[0].mac.disabled = false;
+ else
+   document.forms[0].mac.disabled = true;
+}
+//******************************************************************************
+//* Purpose: Submits the form when a submit event is triggered
+//* Return:  none
+//******************************************************************************
+function formSubmit(submitFlag)
+ {
+  document.forms[0].port_radio[0].disabled = false;
+  document.forms[0].port_radio[1].disabled = false;
+  document.forms[0].port_select.disabled = false;
+  document.forms[0].lag_select.disabled = false;
+  document.forms[0].unit_select.disabled = false;
+  document.forms[0].submit_flag.value = submitFlag;
+  document.forms[0].action="dynamic_address.html";
+  document.forms[0].submit();
+ }
+</script>
+
+</head>
+
+  <body class="bodyStyle" onload="CheckError();printPath();">
+   <form method="post" action="http://10.228.0.21/dynamic_address.html">
+     <br><table cellspacing="0" cellpadding="0" border="0" width="100%">
+  <tbody><tr><td><span id="pagetitle" class="data-area-page-title"> Dynamic Address Table 
+</span></td>
+ <td style="width:14px" valign="MIDDLE">
+ <table cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td nowrap="" class="button-params">
+ <img class="button-params" src="./dynamic-address-table.21_files/lbutton.gif"></td>
+ <td nowrap="" valign="middle" align="center" class="data-area-button">
+ <a href="http://10.228.0.21/dynamic_address.html#" onclick="javascript: window.print() "> Print </a></td>
+ <td nowrap="" class="button-params">
+ <img class="button-params" src="./dynamic-address-table.21_files/rbutton.gif"></td>
+ </tr></tbody></table>
+  </td>
+ <td style="width:14px" valign="MIDDLE">
+ <table cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td nowrap="" class="button-params">
+ <img class="button-params" src="./dynamic-address-table.21_files/lbutton.gif"></td>
+ <td nowrap="" valign="middle" align="center" class="data-area-button">
+ <a href="http://10.228.0.21/dynamic_address.html#" onclick="javascript: formSubmit(8); "> Refresh </a></td>
+ <td nowrap="" class="button-params">
+ <img class="button-params" src="./dynamic-address-table.21_files/rbutton.gif"></td>
+ </tr></tbody></table>
+  </td>
+ </tr></tbody></table><br>
+ <!--Dynamic MAC Address  -->
+      
+
+      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+      <tbody><tr><td> <img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/tl.gif"></td>
+ <td colspan="3 " width="100%" style="background-color:#ADBEE7"></td>
+ <td><img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/tr.gif"></td>
+ </tr>
+ 
+      <tr><td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td><td colspan="3" nowrap="" class="data-area-canvas">&nbsp;</td><td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td></tr>
+
+ <tr><td style="height: 1px;background-color:#ADBEE7;"><img style="width: 1px; height: 1px" src="http://10.228.0.21/dynamic_address.html"></td>
+ <td colspan="3" style="height: 1px" class="data-area-separator"><img style="width: 1px; height: 1px" src="http://10.228.0.21/dynamic_address.html"></td>
+ <td style="height: 1px;background-color:#ADBEE7;"><img style="width: 1px; height: 1px" src="http://10.228.0.21/dynamic_address.html"></td></tr>
+    
+      <tr>
+         <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+             <td class="data-area-canvas-odd" nowrap=""> </td>
+             <td class="data-area-canvas-odd" nowrap="" width="40%"> &nbsp;Address Aging 
+             </td> <!-- Address Aging -->
+             <td class="data-area-canvas-odd" nowrap="">
+             
+             <input type="text" name="addr_aging" size="10" maxlength="7" value="300">
+               (10 - 1000000 seconds)
+             
+
+
+             </td>
+            <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+       </tr>
+       
+        <tr>
+         <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+             <td class="data-area-canvas" nowrap="">  </td>
+             <td class="data-area-canvas" nowrap="" width="40%"> &nbsp;Clear Table</td> <!--Clear Table -->
+             <td class="data-area-canvas" nowrap="">
+               <input type="checkbox" name="clear">
+             </td>
+            <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+       </tr>
+       
+        <tr><td><img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/bl.gif"></td>
+ <td colspan="3" width="100%" style="background-color:#ADBEE7"></td>
+ <td><img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/br.gif"></td>
+ </tr>
+
+      </tbody></table>
+      <br> 
+      
+
+     <table align="CENTER" width="100%">
+      <tbody><tr>
+         <td width="100%" align="CENTER">
+              <table cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td nowrap="" class="button-params">
+ <img class="button-params" src="./dynamic-address-table.21_files/lbutton.gif"></td>
+ <td nowrap="" valign="middle" align="center" class="data-area-button">
+ <a href="http://10.228.0.21/dynamic_address.html#" onclick="javascript: formSubmit(1) "> Apply Changes </a></td>
+ <td nowrap="" class="button-params">
+ <img class="button-params" src="./dynamic-address-table.21_files/rbutton.gif"></td>
+ </tr></tbody></table>
+ 
+         </td>
+      </tr>
+    </tbody></table>
+
+    <br>   
+     
+     <table border="0" cellspacing="0" cellpadding="0" width="100%">
+      <tbody><tr><td> <img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/tl.gif"></td>
+ <td colspan="2 " width="100%" style="background-color:#ADBEE7"></td>
+ <td><img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/tr.gif"></td>
+ </tr>
+ 
+      <!--<TR><TD NOWRAP CLASS='data-area-canvas' width='1px'>&nbsp;</TD><TD COLSPAN=3  NOWRAP CLASS='data-area-canvas'>&nbsp;</TD><TD NOWRAP CLASS='data-area-canvas' width='1px'>&nbsp;</TD></TR>
+
+ <TR><TD STYLE='height: 1px;background-color:#ADBEE7;' ><IMG STYLE='width: 1px; height: 1px' src=''></TD>
+ <TD COLSPAN=3 STYLE='height: 1px' CLASS='data-area-separator'><IMG STYLE='width: 1px; height: 1px' SRC=''></TD>
+ <TD STYLE='height: 1px;background-color:#ADBEE7;'><IMG STYLE='width: 1px; height: 1px' SRC=''></TD></TR>-->
+       <tr><td nowrap="" style="width: 10px" class="data-area-canvas">&nbsp;</td>
+<td nowrap="" class="data-area-tab-header" align="LEFT">Query By:</td><td nowrap="" class="data-area-tab-header" align="LEFT"></td><td nowrap="" style="background-color:#ADBEE7;">&nbsp;</td>
+</tr>
+ <tr>
+<td nowrap="" style="height: 1px;background-color:#ADBEE7;"><img style="width: 1px; height: 1px" src="http://10.228.0.21/dynamic_address.html"></td>
+ <td nowrap="" colspan="2" style="height: 1px" class="data-area-separator"><img style="width: 1px; height: 1px" src="http://10.228.0.21/dynamic_address.html"></td>
+ <td nowrap="" style="height: 1px;background-color:#ADBEE7;"><img style="width: 1px; height: 1px" src="http://10.228.0.21/dynamic_address.html"></td>
+</tr>
+          <tr>
+            <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+  <td class="data-area-canvas-odd" nowrap="" width="40%"> &nbsp;<input type="checkbox" name="qry_by_intf" emweb_type="DECIMAL_UINT" onclick="intfCheck()">
+        Interface</td>
+        <td class="data-area-canvas-odd" nowrap="" width="60%">
+           <input type="radio" name="port_radio" value="port" emweb_type="DECIMAL_UINT" disabled="" onclick="portRadioChecked()" checked="">&nbsp;
+           Unit
+           <select name="unit_select" onchange="formSubmit(2)" disabled="" size="1">
+<option class="selectfield" value="1" selected="">1</option></select> Port
+           <select name="port_select" disabled="" size="1">
+<option class="selectfield" value="1" selected="">g1
+</option><option class="selectfield" value="2">g2
+</option><option class="selectfield" value="3">g3
+</option><option class="selectfield" value="4">g4
+</option><option class="selectfield" value="5">g5
+</option><option class="selectfield" value="6">g6
+</option><option class="selectfield" value="7">g7
+</option><option class="selectfield" value="8">g8
+</option><option class="selectfield" value="9">g9
+</option><option class="selectfield" value="10">g10
+</option><option class="selectfield" value="11">g11
+</option><option class="selectfield" value="12">g12
+</option><option class="selectfield" value="13">g13
+</option><option class="selectfield" value="14">g14
+</option><option class="selectfield" value="15">g15
+</option><option class="selectfield" value="16">g16
+</option><option class="selectfield" value="17">g17
+</option><option class="selectfield" value="18">g18
+</option><option class="selectfield" value="19">g19
+</option><option class="selectfield" value="20">g20
+</option><option class="selectfield" value="21">g21
+</option><option class="selectfield" value="22">g22
+</option><option class="selectfield" value="23">g23
+</option><option class="selectfield" value="24">g24
+</option><option class="selectfield" value="25">g25
+</option><option class="selectfield" value="26">g26
+</option><option class="selectfield" value="27">g27
+</option><option class="selectfield" value="28">g28
+</option><option class="selectfield" value="29">g29
+</option><option class="selectfield" value="30">g30
+</option><option class="selectfield" value="31">g31
+</option><option class="selectfield" value="32">g32
+</option><option class="selectfield" value="33">g33
+</option><option class="selectfield" value="34">g34
+</option><option class="selectfield" value="35">g35
+</option><option class="selectfield" value="36">g36
+</option><option class="selectfield" value="37">g37
+</option><option class="selectfield" value="38">g38
+</option><option class="selectfield" value="39">g39
+</option><option class="selectfield" value="40">g40
+</option><option class="selectfield" value="41">g41
+</option><option class="selectfield" value="42">g42
+</option><option class="selectfield" value="43">g43
+</option><option class="selectfield" value="44">g44
+</option><option class="selectfield" value="45">g45
+</option><option class="selectfield" value="46">g46
+</option><option class="selectfield" value="47">g47
+</option><option class="selectfield" value="48">g48
+</option><option class="selectfield" value="49">xg1
+</option><option class="selectfield" value="50">xg2
+</option><option class="selectfield" value="51">xg3
+</option><option class="selectfield" value="52">xg4</option></select>&nbsp;
+           <input type="radio" name="port_radio" value="lag" disabled="" onclick="portRadioChecked()">&nbsp;
+               LAG
+           <select name="lag_select" disabled="" size="1">
+<option class="selectfield" value="626" selected="">ch1
+</option><option class="selectfield" value="627">ch2
+</option><option class="selectfield" value="628">ch3
+</option><option class="selectfield" value="629">ch4
+</option><option class="selectfield" value="630">ch5
+</option><option class="selectfield" value="631">ch6
+</option><option class="selectfield" value="632">ch7
+</option><option class="selectfield" value="633">ch8
+</option><option class="selectfield" value="634">ch9
+</option><option class="selectfield" value="635">ch10
+</option><option class="selectfield" value="636">ch11
+</option><option class="selectfield" value="637">ch12
+</option><option class="selectfield" value="638">ch13
+</option><option class="selectfield" value="639">ch14
+</option><option class="selectfield" value="640">ch15
+</option><option class="selectfield" value="641">ch16
+</option><option class="selectfield" value="642">ch17
+</option><option class="selectfield" value="643">ch18
+</option><option class="selectfield" value="644">ch19
+</option><option class="selectfield" value="645">ch20
+</option><option class="selectfield" value="646">ch21
+</option><option class="selectfield" value="647">ch22
+</option><option class="selectfield" value="648">ch23
+</option><option class="selectfield" value="649">ch24
+</option><option class="selectfield" value="650">ch25
+</option><option class="selectfield" value="651">ch26
+</option><option class="selectfield" value="652">ch27
+</option><option class="selectfield" value="653">ch28
+</option><option class="selectfield" value="654">ch29
+</option><option class="selectfield" value="655">ch30
+</option><option class="selectfield" value="656">ch31
+</option><option class="selectfield" value="657">ch32
+</option><option class="selectfield" value="658">ch33
+</option><option class="selectfield" value="659">ch34
+</option><option class="selectfield" value="660">ch35
+</option><option class="selectfield" value="661">ch36
+</option><option class="selectfield" value="662">ch37
+</option><option class="selectfield" value="663">ch38
+</option><option class="selectfield" value="664">ch39
+</option><option class="selectfield" value="665">ch40
+</option><option class="selectfield" value="666">ch41
+</option><option class="selectfield" value="667">ch42
+</option><option class="selectfield" value="668">ch43
+</option><option class="selectfield" value="669">ch44
+</option><option class="selectfield" value="670">ch45
+</option><option class="selectfield" value="671">ch46
+</option><option class="selectfield" value="672">ch47
+</option><option class="selectfield" value="673">ch48</option></select>
+        </td>
+        <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+             
+   <td class="data-area-canvas" nowrap="">&nbsp;<input type="checkbox" name="qry_by_mac" emweb_type="DECIMAL_UINT" onclick="macCheck()">&nbsp;
+         MAC Address</td> <!-- MAC Address -->
+        <td class="data-area-canvas" nowrap="">
+           <input type="text" name="mac" disabled="" size="10" maxlength="17" value=""> (XX:XX:XX:XX:XX:XX)
+        </td>
+            <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+     </tr>
+
+     <tr>
+         <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+            
+   <td class="data-area-canvas-odd" nowrap="">&nbsp;<input type="checkbox" name="qry_by_vlan" emweb_type="DECIMAL_UINT" onclick="vlanCheck()">&nbsp;
+             VLAN ID</td>  <!-- VLAN ID -->
+             <td class="data-area-canvas-odd" nowrap="">
+              <input type="text" name="vlan" disabled="" maxlength="4" value="">  (1-4093)
+             </td>
+            <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+    </tr>
+       <tr><td><img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/bl.gif"></td>
+ <td colspan="2" width="100%" style="background-color:#ADBEE7"></td>
+ <td><img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/br.gif"></td>
+ </tr>
+
+      </tbody></table>
+    <br>
+    <table align="CENTER" width="100%">
+      <tbody><tr>
+         <td width="100%" align="CENTER">
+              <table cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr><td nowrap="" class="button-params">
+ <img class="button-params" src="./dynamic-address-table.21_files/lbutton.gif"></td>
+ <td nowrap="" valign="middle" align="center" class="data-area-button">
+ <a href="http://10.228.0.21/dynamic_address.html#" onclick="javascript: formSubmit(16); "> Query </a></td>
+ <td nowrap="" class="button-params">
+ <img class="button-params" src="./dynamic-address-table.21_files/rbutton.gif"></td>
+ </tr></tbody></table>
+ 
+         </td>
+      </tr>
+    </tbody></table>
+
+   <div align="CENTER">
+    <br><table cellspacing="0" cellpadding="0" border="0" width="100%">
+  <tbody><tr><td><span id="pagetitle" class="data-area-page-title"> Current Address Table 
+</span></td>
+ </tr></tbody></table><br>
+ 
+   </div>
+   <br>
+     <table border="0" cellspacing="0" cellpadding="0" width="100%">
+     <tbody><tr><td> <img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/tl.gif"></td>
+ <td colspan="3 " width="100%" style="background-color:#ADBEE7"></td>
+ <td><img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/tr.gif"></td>
+ </tr>
+ 
+      <!-- left,VLAN ID, Port, MAC -->
+      <tr><td nowrap="" style="width: 10px" class="data-area-canvas">&nbsp;</td>
+<td nowrap="" class="data-area-tab-header" align="CENTER">VLAN ID</td><td nowrap="" class="data-area-tab-header" align="CENTER">MAC Address</td><td nowrap="" class="data-area-tab-header" align="CENTER">Interface</td><td nowrap="" style="background-color:#ADBEE7;">&nbsp;</td>
+</tr>
+ <tr>
+<td nowrap="" style="height: 1px;background-color:#ADBEE7;"><img style="width: 1px; height: 1px" src="http://10.228.0.21/dynamic_address.html"></td>
+ <td nowrap="" colspan="3" style="height: 1px" class="data-area-separator"><img style="width: 1px; height: 1px" src="http://10.228.0.21/dynamic_address.html"></td>
+ <td nowrap="" style="height: 1px;background-color:#ADBEE7;"><img style="width: 1px; height: 1px" src="http://10.228.0.21/dynamic_address.html"></td>
+</tr> 
+
+   
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 1</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">00:0a:9c:52:3d:59</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">ch3</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 1</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">00:0a:9c:53:31:bb</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">ch3</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 1</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">00:0a:f7:41:fb:60</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">ch3</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 1</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">3c:a8:2a:0a:8f:92</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">ch3</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 1</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">d0:67:e5:ab:15:b5</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">ch3</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 1</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">d0:67:e5:ab:15:b6</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">ch3</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 1</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">d0:67:e5:c3:2b:87</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">CPU</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">00:01:02:03:04:07</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">00:0a:f7:41:fb:62</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">00:16:3e:10:3b:65</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">00:18:2d:11:00:5d</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g11</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">18:e8:29:22:0f:3f</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1c:1b:0d:9a:f9:67</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g39</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1c:1b:0d:e5:fc:61</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g25</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1c:1b:0d:e5:fe:a1</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g33</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1c:1b:0d:e6:00:55</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g29</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">52:54:00:1f:2d:64</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">52:54:00:44:c6:1b</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">52:54:00:62:57:ff</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">52:54:00:cd:76:ad</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">52:54:00:fe:7a:d8</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">78:2b:cb:5a:47:03</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">9c:52:f8:90:3a:c2</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g14</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">9c:52:f8:90:3a:d0</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g13</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">a0:8c:f8:62:5a:22</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">a4:c6:4f:bc:bd:00</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">d0:67:e5:ab:15:b6</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">d0:67:e5:e4:6a:ae</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">f0:2f:a7:92:72:2b</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g23</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">f4:e9:d4:62:d8:58</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g38</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">f4:e9:d4:62:d8:68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g38</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">f4:e9:d4:62:d8:69</td>
+<td nowrap="" align="CENTER" class="data-area-canvas">1/g37</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+  <tr align="CENTER">
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+
+   <td nowrap="" class="data-area-canvas-odd" align="CENTER">VLAN 68</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">f4:e9:d4:ef:00:51</td>
+<td nowrap="" align="CENTER" class="data-area-canvas-odd">1/g21</td>
+
+    <td nowrap="" class="data-area-canvas" width="1px">&nbsp;</td>
+  </tr>
+  
+
+    <tr><td><img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/bl.gif"></td>
+ <td colspan="3" width="100%" style="background-color:#ADBEE7"></td>
+ <td><img style="width: 10px; height: 10px" src="./dynamic-address-table.21_files/br.gif"></td>
+ </tr>
+
+    </tbody></table>
+
+
+ <input type="hidden" name="submit_flag" value="0">
+ <input type="hidden" name="err_flag" size="16" maxlength="15" value="0">
+ <input type="hidden" name="err_msg" size="128" maxlength="127" value="">
+
+  </form>
+  
+     
+
+</body></html>
