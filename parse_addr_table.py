@@ -6,16 +6,18 @@ import subprocess
 from html.parser import HTMLParser
 from enum import Enum
 
+mac_addr_table=[]
+
 class ParsingStep(Enum):
     FINDING_TABLE = 0
     PARSING_TABLE = 1
     PARSING_CELL = 2
 
-
 class MyHTMLParser(HTMLParser):
     TABLE_ID_STRING="Current Address Table"
     search_step=ParsingStep.FINDING_TABLE
     cell_count=0
+    addr_row=[]
 
     def handle_starttag(self, tag, attrs):
         if((self.search_step == ParsingStep.PARSING_TABLE) and (tag == "tr")):
@@ -30,11 +32,13 @@ class MyHTMLParser(HTMLParser):
             self.search_step=ParsingStep.PARSING_TABLE
         if(self.search_step == ParsingStep.PARSING_CELL):
             if(not data.isspace()):
-                print(data,end=",")
+                self.addr_row.append(data)
                 self.cell_count+=1
                 if(self.cell_count==3):
-                    print("")
+#                    print(self.addr_row)
+                    mac_addr_table.append(self.addr_row.copy())
                     self.cell_count=0
+                    self.addr_row.clear()
 
 
 html_parser = MyHTMLParser()
@@ -46,6 +50,7 @@ cmd="wget --http-user=admin --http-password=canonical --output-document=- http:/
 with subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE) as wget_stdout:
     line_in_bytes=wget_stdout.stdout.read()
     html_parser.feed(line_in_bytes.decode("utf-8"))
-#    print(wget_stdout.stdout.read())
+
+print(mac_addr_table)
 
 # Note: think about close()
