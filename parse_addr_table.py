@@ -44,7 +44,8 @@ html_parser = MyHTMLParser()
 # with open(cli_args.filename, 'r') as f:
 cmd="wget --http-user=admin --http-password=canonical --output-document=- http://10.228.0.21/dynamic_address.html"
 with subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE) as wget_stdout:
-   html_parser.feed(wget_stdout.stdout.read())
-proc.stdout.close()
+    line_in_bytes=wget_stdout.stdout.read()
+    html_parser.feed(line_in_bytes.decode("utf-8"))
+#    print(wget_stdout.stdout.read())
 
-
+# Note: think about close()
