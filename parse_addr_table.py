@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 import argparse
+import subprocess
+
 from html.parser import HTMLParser
 from enum import Enum
 
@@ -36,10 +38,13 @@ class MyHTMLParser(HTMLParser):
 
 
 html_parser = MyHTMLParser()
-arg_parser = argparse.ArgumentParser()
-arg_parser.add_argument("filename")
-cli_args = arg_parser.parse_args()
-with open(cli_args.filename, 'r') as f:
-   html_parser.feed(f.read())
-f.closed
+# arg_parser = argparse.ArgumentParser()
+# arg_parser.add_argument("filename")
+# cli_args = arg_parser.parse_args()
+# with open(cli_args.filename, 'r') as f:
+cmd="wget --http-user=admin --http-password=canonical --output-document=- http://10.228.0.21/dynamic_address.html"
+with subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE) as wget_stdout:
+   html_parser.feed(wget_stdout.stdout.read())
+proc.stdout.close()
+
 
