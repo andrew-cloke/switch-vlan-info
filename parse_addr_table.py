@@ -2,11 +2,18 @@
 
 import argparse
 import subprocess
+import yaml
 
 from html.parser import HTMLParser
 from enum import Enum
 
 mac_addr_table=[]
+
+switches= ["chief", "resnik", "gilbert"]
+switch_creds={   # To be removed once integrated into machines.yaml
+        "chief":  {"username": "admin", "password": "admin"},
+        "resnik":  {"username": "admin", "password": "admin"},
+        "gilbert":  {"username": "admin", "password": "admin"} }
 
 class ParsingStep(Enum):
     FINDING_TABLE = 0
@@ -42,15 +49,24 @@ class MyHTMLParser(HTMLParser):
 
 
 html_parser = MyHTMLParser()
-# arg_parser = argparse.ArgumentParser()
-# arg_parser.add_argument("filename")
-# cli_args = arg_parser.parse_args()
-# with open(cli_args.filename, 'r') as f:
-cmd="wget --http-user=admin --http-password=canonical --output-document=- http://10.228.0.21/dynamic_address.html"
-with subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE) as wget_stdout:
-    line_in_bytes=wget_stdout.stdout.read()
-    html_parser.feed(line_in_bytes.decode("utf-8"))
+arg_parser = argparse.ArgumentParser()
+arg_parser.add_argument("filename")
+cli_args = arg_parser.parse_args()
 
-print(mac_addr_table)
+with open(cli_args.filename) as f:
+    machines = yaml.safe_load(f)
+
+for switch in switches:
+    address=machines[switch]["interfaces"]["eth0"]["address"]
+    username=switch_creds[switch]["username"]
+    password=switch_creds[switch]["password"]
+    print(address, username, password)
+
+# cmd="wget --http-user=admin --http-password=canonical --output-document=- http://10.228.0.21/dynamic_address.html"
+# with subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE) as wget_stdout:
+#     line_in_bytes=wget_stdout.stdout.read()
+#     html_parser.feed(line_in_bytes.decode("utf-8"))
+# 
+# print(mac_addr_table)
 
 # Note: think about close()
