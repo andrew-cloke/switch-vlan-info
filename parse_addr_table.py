@@ -3,17 +3,18 @@
 import argparse
 import subprocess
 import yaml
+import re
 
 from html.parser import HTMLParser
 from enum import Enum
 
 mac_addr_table=[]
 
-switches= ["chief", "resnik", "gilbert"]
+switches= ["resnik", "gilbert"]
 switch_creds={   # To be removed once integrated into machines.yaml
-        "chief":  {"username": "admin", "password": "admin"},
-        "resnik":  {"username": "admin", "password": "admin"},
-        "gilbert":  {"username": "admin", "password": "admin"} }
+#        "chief":  {"username": "admin", "password": "admin"},
+        "resnik":  {"username": "admin", "password": "ubuntu"},
+        "gilbert":  {"username": "admin", "password": "canonical"} }
 
 class ParsingStep(Enum):
     FINDING_TABLE = 0
@@ -25,6 +26,13 @@ class MyHTMLParser(HTMLParser):
     search_step=ParsingStep.FINDING_TABLE
     cell_count=0
     addr_row=[]
+
+# Check that we've really got a (vlan, MAC, port) triple, and add it to mac_addr_table
+    def validate_and_add_row(self,row):
+        row[1]=re.sub(':','',row[1])  # Remove ':' to normalise MAC format across different switches
+        row[1]=row[1].upper()         # Translate to uppercase to normalise across switches
+        if(len(row[1])==12):
+            mac_addr_table.append(row.copy())
 
     def handle_starttag(self, tag, attrs):
         if((self.search_step == ParsingStep.PARSING_TABLE) and (tag == "tr")):
@@ -43,12 +51,11 @@ class MyHTMLParser(HTMLParser):
                 self.cell_count+=1
                 if(self.cell_count==3):
 #                    print(self.addr_row)
-                    mac_addr_table.append(self.addr_row.copy())
+                    self.validate_and_add_row(self.addr_row)
                     self.cell_count=0
                     self.addr_row.clear()
 
 
-html_parser = MyHTMLParser()
 arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument("filename")
 cli_args = arg_parser.parse_args()
@@ -62,11 +69,12 @@ for switch in switches:
     password=switch_creds[switch]["password"]
     print(address, username, password)
 
-# cmd="wget --http-user=admin --http-password=canonical --output-document=- http://10.228.0.21/dynamic_address.html"
-# with subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE) as wget_stdout:
-#     line_in_bytes=wget_stdout.stdout.read()
-#     html_parser.feed(line_in_bytes.decode("utf-8"))
-# 
-# print(mac_addr_table)
+    cmd="wget --http-user="+username+" --http-password="+password+" --output-document=- http://"+address+"/dynamic_address.html"
+    html_parser = MyHTMLParser()
+    with subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE) as wget_stdout:
+        line_in_bytes=wget_stdout.stdout.read()
+        html_parser.feed(line_in_bytes.decode("utf-8"))
+
+print(mac_addr_table)
 
 # Note: think about close()
