@@ -11,10 +11,6 @@ from enum import Enum
 mac_addr_table=[]
 
 switches= ["resnik", "gilbert"]
-switch_creds={   # To be removed once integrated into machines.yaml
-#        "chief":  {"username": "admin", "password": "admin"},
-        "resnik":  {"username": "admin", "password": "ubuntu"},
-        "gilbert":  {"username": "admin", "password": "canonical"} }
 
 class ParsingStep(Enum):
     FINDING_TABLE = 0
@@ -27,11 +23,15 @@ class MyHTMLParser(HTMLParser):
     cell_count=0
     addr_row=[]
 
+    def add_switch_name(self,switch):
+        self.switch_name=switch
+        self.addr_row=[switch]
+
 # Check that we've really got a (vlan, MAC, port) triple, and add it to mac_addr_table
     def validate_and_add_row(self,row):
-        row[1]=re.sub(':','',row[1])  # Remove ':' to normalise MAC format across different switches
-        row[1]=row[1].upper()         # Translate to uppercase to normalise across switches
-        if(len(row[1])==12):
+        row[2]=re.sub(':','',row[2])  # Remove ':' to normalise MAC format across different switches
+        row[2]=row[2].upper()         # Translate to uppercase to normalise across switches
+        if(len(row[2])==12):
             mac_addr_table.append(row.copy())
 
     def handle_starttag(self, tag, attrs):
@@ -50,10 +50,10 @@ class MyHTMLParser(HTMLParser):
                 self.addr_row.append(data)
                 self.cell_count+=1
                 if(self.cell_count==3):
-#                    print(self.addr_row)
                     self.validate_and_add_row(self.addr_row)
                     self.cell_count=0
-                    self.addr_row.clear()
+                    self.addr_row=[self.switch_name]
+#                    self.addr_row.clear()
 
 
 arg_parser = argparse.ArgumentParser()
@@ -65,12 +65,13 @@ with open(cli_args.filename) as f:
 
 for switch in switches:
     address=machines[switch]["interfaces"]["eth0"]["address"]
-    username=switch_creds[switch]["username"]
-    password=switch_creds[switch]["password"]
+    username=machines[switch]["user"]
+    password=machines[switch]["password"]
     print(address, username, password)
 
     cmd="wget --http-user="+username+" --http-password="+password+" --output-document=- http://"+address+"/dynamic_address.html"
     html_parser = MyHTMLParser()
+    html_parser.add_switch_name(switch)
     with subprocess.Popen([cmd], shell=True, stdout=subprocess.PIPE) as wget_stdout:
         line_in_bytes=wget_stdout.stdout.read()
         html_parser.feed(line_in_bytes.decode("utf-8"))
